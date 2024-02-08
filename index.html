@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow</title>
+         <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F7FFE0; /* Background color */
+            color: #9F7E69; /* Text color */
+        }
+
+        nav {
+            background-color: #3b8481; /* Navbar background color */
+            padding: 10px;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #ffffff; /* Navbar text color */
+            text-align: left;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        nav #brand {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+            color: #ffffff; /* Brand text color */
+        }
+
+        nav .dropdown {
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f2efc7; /* Dropdown background color */
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+        }
+
+        nav .dropdown-content a {
+            color: #d2bba0;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        nav .dropdown-content a:hover {
+            background-color: #cd8c8c;
+        }
+
+        nav .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #866c69;
+        }
+
+        #container {
+            display: flex;
+            margin: 20px auto;
+            justify-content: space-between;
+        }
+
+        #products {
+            width: 80%;
+            padding: 20px;
+            background-color: #f2efc7; /* Products background color */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        #sections {
+            width: 20%;
+            background-color: #f2efc7; /* Sections background color */
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .section {
+            cursor: pointer;
+            margin-bottom: 10px;
+            padding: 15px;
+            background-color: #eed155;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .section:hover {
+            background-color: #866c69;
+        }
+
+        .product-section {
+            display: none;
+        }
+
+        .product-section.active {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product {
+            width: 30%;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #f2efc7; /* Product border color */
+            border-radius: 10px;
+            background-color: #f7ffe0; /* Product background color */
+        }
+
+        .product img {
+    max-width: 100%; /* Make the image responsive to mobile views */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+
+        .product a {
+            display: block;
+            text-align: center;
+            background-color: #eed155;
+            color: #fff;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product a:hover {
+            background-color: #866c69;
+        }
+
+        footer {
+            background-color: #3b8481; /* Footer background color */
+            color: #ffeee2; /* Footer text color */
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #celebration-message {
+            width: 100%;
+            padding: 20px;
+            background-color: #FFFFF; /* Celebration message background color */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #celebration-message p {
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        nav img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px; /* Adjust the margin for spacing */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+	<img src="logo.png" alt="Rainbow Logo"> 
+        <span id="brand">Rainbow</span>
+        <div class="dropdown">
+            <a href="#">Sections</a>
+            <div class="dropdown-content">
+                <a href="#" onclick="showProducts('section1')">cakes</a>
+                <a href="#" onclick="showProducts('section2')">make up</a>
+                <a href="#" onclick="showProducts('section3')">hair stylist</a>
+				<a href="#" onclick="showProducts('section4')">Photographers</a>
+				<a href="#" onclick="showProducts('section5')">Bridesmaid</a>
+				<a href="#" onclick="showProducts('section6')">Fashion designers</a>
+				<a href="#" onclick="showProducts('section7')">Rose arrangements</a>
+
+
+                <!-- Add more sections as needed -->
+            </div>
+        </div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div id="celebration-message">
+        <p>To a complete celebration without any deficiency, with high quality and accurate experience,<br> our website connects you to everything that is special ✨✨✨✨✨✨ With Rainbow, nothing is difficult.</p>
+    </div>
+
+    <div id="container">
+	 <div id="sections">
+            <div class="section" onclick="showProducts('section1')">cakes</div>
+            <div class="section" onclick="showProducts('section2')">make up</div>
+            <div class="section" onclick="showProducts('section3')">hair stylist</div>
+			<div class="section" onclick="showProducts('section4')">Photographers</div>
+            <div class="section" onclick="showProducts('section5')">Bridesmaid</div>
+            <div class="section" onclick="showProducts('section6')">Fashion designers</div>
+            <div class="section" onclick="showProducts('section7')">Rose arrangements</div>
+
+            <!-- Add more sections as needed -->
+        </div>
+        <div id="products">
+            <!-- Product sections will be displayed here -->
+            <div id="section1" class="product-section active">
+                <div class="product">
+                    <img src="a1.jpg" alt="Product 1">
+                    <h3>cake studiosa</h3>
+                    <a href="https://www.instagram.com/cakestudiosa/?igsh=MXZjNzV5eGNuZWRt" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="a2.jpg" alt="Product 2">
+                    <h3>puffy cakee</h3>
+                    <a href="https://www.instagram.com/puffycakee/?igsh=MWh6NGg3cGxxYTdrMA%3D%3D" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="a3.jpg" alt="Product 3">
+                    <h3>sugar sprinkles</h3>
+                    <a href="https://www.instagram.com/sugar_sprinkles/" target="_blank">Instagram</a>
+                </div>
+				<div class="product">
+                    <img src="a4.jpg" alt="Product 4">
+                    <h3>ward stor</h3>
+                    <a href="https://www.instagram.com/wed.01/" target="_blank">Instagram</a>
+                </div>
+            </div>
+
+            <div id="section2" class="product-section">
+                <div class="product">
+                    <img src="b1.jpg" alt="Product 4">
+                    <h3>shaaim beauty</h3>
+                    <a href="https://www.instagram.com/shaaim.beauty/?igsh=MWUza2o4ZmEyenR1Zw%3D%3D" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="b2.jpg" alt="Product 5">
+                    <h3>Sabaa Al-Ajlan</h3>
+                    <a href="https://www.instagram.com/makup_seba/?igsh=MXFqZHQ5b2QxMWxpNQ%3D%3D" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="b3.jpg" alt="Product 6">
+                    <h3>Amani Al-Abdullah</h3>
+                    <a href="https://www.instagram.com/mua.am1/?igsh=MTduMmluZGptZXZzZA%3D%3D" target="_blank">Instagram</a>
+                </div>
+				<div class="product">
+                    <img src="b4.jpg" alt="Product 6">
+                    <h3>Al-Hanouf Al-Asiri</h3>
+                    <a href="https://www.instagram.com/alhanof_artist/?igsh=MXUxcXNicTd3YjE2Ng%3D%3D" target="_blank">Instagram</a>
+                </div>
+            </div>
+
+            <div id="section3" class="product-section">
+                <div class="product">
+                    <img src="c1.jpg" alt="Product 7">
+                    <h3>rewan</h3>
+                    <a href="https://www.instagram.com/rw_hairstyle/?igsh=Z213a2p4anBxa3V1" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="c2.jpg" alt="Product 8">
+                    <h3>Zahraa Abdullah</h3>
+                    <a href="https://www.instagram.com/xq.r22/?igsh=ZDkwM2dmdGxlNG13" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="c3.jpg" alt="Product 9">
+                    <h3>Muneera Al-Qahtani</h3>
+                    <a href="https://www.instagram.com/mno.hairstyle22/" target="_blank">Instagram</a>
+                </div>
+				<div class="product">
+                    <img src="c4.jpg" alt="Product 9">
+                    <h3>Bushra Al-Ahmari</h3>
+                    <a href="https://www.instagram.com/bushra_hair_style?igsh=MTFuamltbGtkaGxhOQ%3D%3D" target="_blank">Instagram</a>
+                </div>
+            </div>
+			<div id="section4" class="product-section">
+                <div class="product">
+                    <img src="D1.jpg" alt="Product 7">
+                    <h3>Amal Al-Aboud</h3>
+                    <a href="https://www.instagram.com/aml_alaboud?igsh=MWdjMmZoMXljdTI5Nw%3D%3D" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="D2.jpg" alt="Product 8">
+                    <h3>malak_almawi</h3>
+                    <a href="https://www.instagram.com/malak_almawi?igsh=NnhpOXN1cDBvODBl" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="D3.jpg" alt="Product 9">
+                    <h3>Renad Lazma</h3>
+                    <a href="https://www.instagram.com/renad.ph?igsh=NzY5b2Z4YnE3dXFo" target="_blank">Instagram</a>
+                </div>
+				<div class="product">
+                    <img src="D4.jpg" alt="Product 9">
+                    <h3>Sarah Gandaf</h3>
+                    <a href="https://www.instagram.com/v0.ve?igsh=ZnVvdDhqemM3ZTBt" target="_blank">Instagram</a>
+                </div>
+            </div>
+			<div id="section5" class="product-section">
+                <div class="product">
+                    <img src="E1.jpg" alt="Product 7">
+                    <h3>Aml</h3>
+                    <a href="https://www.instagram.com/wa_s1i1?igsh=MW9oejBjcmE0a2lqMg%3D%3D" target="_blank">Instagram</a>
+                </div>
+				
+                <div class="product">
+                    <img src="E2.jpg" alt="Product 8">
+                    <h3>Rewan</h3>
+                    <a href="https://www.instagram.com/ra.se8?igsh=MWllYzZoMGwwcHZzdw%3D%3D" target="_blank">Instagram</a>
+                </div>
+            </div>
+			<div id="section6" class="product-section">
+                <div class="product">
+                    <img src="F1.jpg" alt="Product 7">
+                    <h3>fancy designe</h3>
+					<p> phone number : 0505809189</p>
+                    <a href="https://www.instagram.com/fancy_designe?igsh=MTNxemlpZG9nNWwzcg%3D%3D" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="F2.jpg" alt="Product 8">
+                    <h3>Wejdan Al Amoudi boutique</h3>
+					<p> phone number : 0545273840</p>
+
+                    <a href="https://www.instagram.com/wijdan_alamoudiii?igsh=MWJnZXNtNWhhdXZpdg%3D%3D" target="_blank">Instagram</a>
+                </div>
+                <div class="product">
+                    <img src="F3.jpg" alt="Product 9">
+                    <h3>reham fashion</h3>
+					<p> phone number : 0557229554</p>
+
+                    <a href="https://www.instagram.com/reham_fashion89?igsh=MXZkOWZ4dmJ5ZmFvdw%3D%3D" target="_blank">Instagram</a>
+                </div>								
+            </div>
+			<div id="section7" class="product-section">
+                <div class="product">
+                    <img src="G1.jpg" alt="Product 7">
+                    <h3>Gift Arts</h3>
+                    <a href="https://linktr.ee/gift.arts?utm_source=linktree_profile_share" target="_blank">link Tree</a>
+                </div>
+                <div class="product">
+                    <img src="G2.jpg" alt="Product 8">
+                    <h3>Documentation Flowers</h3>
+
+                    <a href="https://dmflowers11.com/?fbclid=PAAaa4PEv_VlvXJrtSJuwiKCz6wN9jAKCfgPdv_FH7oclKAofL5Yts_O07xK8_aem_Ad80IjLdJf4LHGC7JE7UouyTIOz_ROMW2KCYCFfK1Cf96Pz2HA_qAT_Nq1GN_uYtAy0" target="_blank">website</a>
+                </div>
+                <div class="product">
+                    <img src="G3.jpg" alt="Product 9">
+                    <h3>welaf flowers</h3>
+
+                    <a href="https://www.instagram.com/welaf.flowers?igsh=bW11ZTVzdzhjdzli" target="_blank">Instagram</a>
+                </div>
+				 <div class="product">
+                    <img src="G4.jpg" alt="Product 9">
+                    <h3>Jian flowers</h3>
+
+                    <a href="https://jiaan1.com/" target="_blank">website</a>
+                </div>
+				
+				
+            </div>
+        </div>
+
+       
+
+    </div>
+
+    <footer>
+        &copy; 2024 Rainbowcelebration. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var dropdown = document.querySelector('.dropdown');
+            var dropdownContent = document.querySelector('.dropdown-content');
+
+            dropdown.addEventListener('mouseover', function() {
+                dropdownContent.style.display = 'block';
+            });
+
+            dropdown.addEventListener('mouseout', function() {
+                dropdownContent.style.display = 'none';
+            });
+
+            dropdownContent.addEventListener('mouseover', function() {
+                dropdownContent.style.display = 'block';
+            });
+
+            dropdownContent.addEventListener('mouseout', function() {
+                dropdownContent.style.display = 'none';
+            });
+        });
+
+        function showProducts(sectionId) {
+            var productSections = document.querySelectorAll('.product-section');
+            productSections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+
+            var selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
